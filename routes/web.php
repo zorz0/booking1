@@ -7,6 +7,7 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
+use App\Http\Controllers\HotelController;
 
 
 include_once "frontend.php";
@@ -68,3 +69,8 @@ Route::post('/phone_info',[ClientController::class,'storePhoneInfo'])->name('pho
 Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name('trip_invoice');
 //Route::view('/trip_invoice' , 'frontend.trip_invoice');
 //Route::view('/passengers_details' , 'frontend.passengers_details');
+
+// routes/web.php
+
+
+Route::resource('hotels', HotelController::class);
