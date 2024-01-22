@@ -23,7 +23,7 @@ class CityTableSeeder extends Seeder
         $countries = $response->json();
         // Insert countries into the database
         foreach ($countries['data']as $country) {
-            $country_id = Country::where('name' , $country['country'])->first()?->id;
+            $country_id = Country::where('name' , $country['country'])->first();
             if($country['cities'] && $country_id){
                 foreach($country['cities'] as $city){
                     DB::table('cities')->insert([

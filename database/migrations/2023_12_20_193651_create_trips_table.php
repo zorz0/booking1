@@ -15,15 +15,16 @@ return new class extends Migration
             $table->id();
             $table->float('price_adult',10,5);
             $table->float('price_child',10,5);
-            $table->unsignedBigInteger('from');
-            $table->unsignedBigInteger('to');
-            $table->timestamp('leaving_date');
-            $table->timestamp('arriving_date') ->nullable';
+            $table->unsignedBigInteger('from')->nullable();
+            $table->unsignedBigInteger('to')->nullable();
+            $table->date('leaving_date')->nullable();
+            $table->date('arriving_date')->nullable();
             $table->integer('passengers')->nullable();
-            $table->timestamps();
 
             $table->foreign('from')->references('id')->on('states');
             $table->foreign('to')->references('id')->on('states');
+            $table->timestamps();
+
         });
     }
 

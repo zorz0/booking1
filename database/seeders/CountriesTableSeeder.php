@@ -11,7 +11,7 @@ class CountriesTableSeeder extends Seeder
     public function run()
     {
         // Clear existing data from the table
-        DB::table('countries')->truncate();
+//        DB::table('countries')->truncate();
 
         // Fetch countries from the REST Countries API
         /* $response = Http::get('https://restcountries.com/v2/all');
