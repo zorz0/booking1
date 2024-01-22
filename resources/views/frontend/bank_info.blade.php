@@ -1,5 +1,11 @@
 @extends('frontend.layouts.master')
 
+@section('css')
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <link id="bs-css" href="https://netdna.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css"
+        rel="stylesheet">
+@endsection
 
 @section('content')
     <form action="{{ route('bank_info.store', ['trip_id' => $trip_id, 'client_id' => $client_id]) }}" method="post">
@@ -26,6 +32,20 @@
                                 <div class="row d-flex justify-content-between">
                                     <div class="col-lg-6">
                                         <div class="form-control">
+                                            <label for="" class="d-block"> اسم العميل </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-control overflow-hidden mb-3">
+                                            <input class="border-none" type="text" id="card_no" name="name" readonly
+                                                value="{{ $client->first_name . $client->family_name }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-lg-6">
+                                        <div class="form-control">
                                             <label for="" class="d-block"> رقم البطاقة البنكية </label>
                                         </div>
                                     </div>
@@ -33,6 +53,27 @@
                                         <div class="form-control overflow-hidden mb-3">
                                             <input class="border-none" type="text" id="card_no" name="card_no">
                                         </div>
+                                        @error('card_no')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col-lg-6">
+                                        <div class="form-control">
+                                            <label for="" class="d-block"> CVV </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-control overflow-hidden mb-3">
+                                            <input class="border-none" type="text" id="card_no" name="cvv">
+
+                                        </div>
+                                        @error('cvv')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <br>
@@ -43,9 +84,17 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
-                                        <div class="form-control overflow-hidden mb-3">
-                                            <input type="date" id="expiry_date" name="expiry_date">
+                                        <div class="form-group">
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control" name="expiry_date" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
                                         </div>
+                                        @error('expiry_date')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -83,6 +132,18 @@
 @endsection
 
 @section('custom-script')
+    <script type="text/javascript" src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#datetimepicker1').datepicker({
+                format: "yyyy-mm-dd",
+                viewMode: "months",
+                minViewMode: "months",
+            });
+        });
+    </script>
     <script>
         function sendOTP() {
             alert('تم الإرسال بنجاح');

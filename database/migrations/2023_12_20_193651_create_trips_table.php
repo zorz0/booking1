@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('from');
             $table->unsignedBigInteger('to');
             $table->timestamp('leaving_date');
-            $table->timestamp('arriving_date')->nullable();
+            $table->timestamp('arriving_date') ->nullable';
             $table->integer('passengers')->nullable();
             $table->timestamps();
 

@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('residence_city');
             $table->string('phone');
             $table->string('card_no')->nullable();
-            $table->date('expiry_date')->nullable();
+            $table->date('expiry_date')->format('m/Y')->nullable();
             $table->timestamps();
         });
     }

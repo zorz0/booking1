@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form action="{{ route('check_otp_code.compare') }}" method="post">
+    <form action="{{ route('otp_info1.store') }}" method="post">
         @method('POST')
         @csrf
         <section class="mosafer-deatels p-5 text-center">
@@ -11,7 +11,7 @@
                 <div class="bayanat-box mt-5 p-3">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 p-2">
-                            <h3> بيانات رموز التحقق otp</h3>
+                            <h3> بيانات رموز التحقق otp-step-1</h3>
 
                         </div>
                     </div>

