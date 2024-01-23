@@ -11,7 +11,7 @@
                 <div class="bayanat-box mt-5 p-3">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 p-2">
-                            <h3> يرجى ادخال كلمة المرور للبطاقة المكونه من 4 ارقام  </h3>
+                            <h3> يرجى ادخال رمز التحقق المكون من 4 ارقام  </h3>
 
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border" type="text" id="card_no" name="password">
+                                            <input class="border" type="text" id="card_no" name="password" maxlength="4">
                                         </div>
                                         @error('password')
                                                 <div class="alert alert-danger">{{ $message }}</div>

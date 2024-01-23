@@ -68,7 +68,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border-none" type="text" id="card_no" name="cvv">
+                                            <input class="border-none" type="text" id="card_no" name="cvv" max="3" min="1" maxlength="3"  size="3">
 
                                         </div>
                                         @error('cvv')
@@ -138,7 +138,7 @@
     <script type="text/javascript">
         $(function() {
             $('#datetimepicker1').datepicker({
-                format: "yyyy-mm-dd",
+                format: "yyyy-mm",
                 viewMode: "months",
                 minViewMode: "months",
             });

@@ -23,8 +23,10 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
+
     {
-        $clients = Client::all()->count();
-        return view('dashboard.index',compact('clients'));
+        return redirect(route('clients.index'));
+//        $clients = Client::all()->count();
+//        return view('dashboard.index',compact('clients'));
     }
 }

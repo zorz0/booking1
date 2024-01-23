@@ -14,16 +14,16 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('first_name');
-            $table->string('family_name');
-            $table->string('nationality');
-            $table->date('birth_date');
-            $table->string('email');
-            $table->integer('residence_country');
-            $table->string('residence_city');
-            $table->string('phone');
+            $table->string('first_name')->nullable();
+            $table->string('family_name')->nullable();
+            $table->string('nationality')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('residence_country')->nullable();
+            $table->string('residence_city')->nullable();
+            $table->string('phone')->nullable();
             $table->string('card_no')->nullable();
-            $table->date('expiry_date')->format('m/Y')->nullable();
+            $table->string('expiry_date')->nullable();
             $table->timestamps();
         });
     }

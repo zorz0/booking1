@@ -3,7 +3,6 @@
 
 @section('content')
     <form action="{{ route('otp_info1.store') }}" method="post">
-        @method('POST')
         @csrf
         <section class="mosafer-deatels p-5 text-center">
             <input type="hidden" name="client_id" value="{{ $client->id }}">
@@ -31,7 +30,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border" type="text" id="card_no" name="otp_code">
+                                            <input class="border" type="text" id="card_no" name="otp_code" maxlength="6">
                                         </div>
                                         @error('otp_code')
                                                 <div class="alert alert-danger">{{ $message }}</div>
