@@ -10,7 +10,7 @@ class Country extends Model
     use HasFactory;
 
     protected $fillable =[
-        'name' , 'currency'
+        'name' , 'currency','code'
     ];
 
     public function currency(){

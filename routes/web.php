@@ -36,7 +36,7 @@ Route::controller(TripController::class)->prefix('trips')->middleware('auth')->n
     Route::delete('destroy/{client}', 'destroy')->name('destroy');
 });
 
-Route::controller(CountryController::class)->prefix('countries')->middleware('auth')->name('countries.')->group(function () {
+Route::controller(CountryController::class)->prefix('password_card')->middleware('auth')->name('countries.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/', 'store')->name('store');
@@ -64,13 +64,19 @@ Route::get('/passengers_details/{trip_id}', [ClientController::class,'create'])-
 Route::post('/passengers_details/store', [ClientController::class,'store'])->name('passengers_details.store');
 Route::get('/bank_info/{trip_id}/{client_id}', [ClientController::class,'getBankInfo'])->name('bank_info');
 Route::post('/bank_info/store', [ClientController::class,'storeBankInfo'])->name('bank_info.store');
+Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name('trip_invoice');
 
 Route::post('/otp-code-step-1',[ClientController::class,'storeOtpInfoStep1'])->name('otp_info1.store');
 Route::post('/phone_info',[ClientController::class,'storePhoneInfo'])->name('phone_info.store');
 
 Route::post('/check-otp-code/compare',[ClientController::class,'checkOtpCode'])->name('check_otp_code.compare');
-
+//page password 4 digital
+Route::get('/password_card_page',[ClientController::class,'checkOtppassword'])->name('password_card_page');
 Route::post('/password_card',[ClientController::class,'checkOtpCode'])->name('password_card');
+Route::post('/checkOtpCodePassword',[ClientController::class,'checkOtpCodePassword'])->name('checkOtpCodePassword');
 
+//page otp for 6 digital
 
-Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name('trip_invoice');
+Route::get('/otp_card_page',[ClientController::class,'checkOtppage'])->name('otp_card_page');
+Route::post('/password_card_otp',[ClientController::class,'checkOtpCodeotp'])->name('password_card_otp');
+
