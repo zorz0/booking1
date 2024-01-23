@@ -14,7 +14,7 @@ class CountryController extends Controller
     public function index()
     {
         $countries = Country::with('currency')->paginate(10);
-        return view('dashboard.countries.index' , compact('countries'));
+        return view('dashboard.countries.index', compact('countries'));
     }
 
     /**
@@ -22,7 +22,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        //
+        $currencies = Currency::all();
+        return view('dashboard.countries.create', compact('currencies'));
     }
 
     /**
@@ -30,7 +31,17 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $request->validate([
+            'name' => 'required|string',
+            'currency' => 'required',
+            'code' => 'required',
+        ]);
+        $country = Country::create($request->except('_token'));
+
+
+        return redirect(route('countries.index'));
+
     }
 
     /**
@@ -47,7 +58,7 @@ class CountryController extends Controller
     public function edit(Country $country)
     {
         $currencies = Currency::all();
-        return view('dashboard.countries.edit' ,compact('currencies' , 'country'));
+        return view('dashboard.countries.edit', compact('currencies', 'country'));
     }
 
     /**

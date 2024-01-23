@@ -31,9 +31,23 @@ class TripController extends Controller
     public function store(StoreTripRequest $request)
     {
         // dd($request);
-        $inputs = $request->all();
+        $inputs = $request->except('leaving_date', 'arriving_date');
         unset($inputs['_token']);
-        Trip::create($inputs);
+//        $trip = Trip::create($inputs);
+
+        foreach ($request['leaving_date'] as $key => $value) {
+            Trip::create([
+                'price_adult' => $request['price_adult'],
+                'price_child' => $request['price_child'],
+                'from' => $request['from'],
+                'to' => $request['to'],
+                'leaving_date' => $request['leaving_date'][$key],
+                'arriving_date' => $request['arriving_date'][$key],
+                'passengers' => $request['passengers']
+
+            ]);
+
+        }
         Alert::success('success', 'تم حفظ الرحلة بنجاح');
         return redirect()->route('trips.index');
     }
@@ -92,7 +106,7 @@ class TripController extends Controller
      */
     public function chooseTrip(Request $request)
     {
-        $trips = Trip::with(['fromCity' , 'toCity'])->paginate(10);
+        $trips = Trip::with(['fromCity', 'toCity'])->paginate(10);
         $countries = Country::all();
         return view('frontend.choose_trip', compact('trips', 'countries'));
     }

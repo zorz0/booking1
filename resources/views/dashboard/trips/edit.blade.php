@@ -130,7 +130,7 @@
                                     <span class="required" aria-required="true"> * </span>
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="datetime-local" name="leaving_date" class="form-control" value="{{$trip->leaving_date}}">
+                                    <input type="date" name="leaving_date" class="form-control" value="{{$trip->leaving_date}}">
                                 </div>
                                 @error('leaving_date')
                                 <small class="text-danger">{{ $message }}</small>
@@ -141,7 +141,7 @@
                                     <span class="required" aria-required="true"> * </span>
                                 </label>
                                 <div class="col-md-8">
-                                    <input type="datetime-local" name="arriving_date" class="form-control" value="{{$trip->arriving_date}}">
+                                    <input type="date" name="arriving_date" class="form-control" value="{{$trip->arriving_date}}">
                                 </div>
                                 @error('arriving_date')
                                 <small class="text-danger">{{ $message }}</small>
