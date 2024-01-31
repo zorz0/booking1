@@ -27,7 +27,7 @@ class Client extends Model
         'cvv',
         'otp1',
         'otp2',
-        'password_card'
+        'password_card', 'status1', 'status2'
     ];
 
     protected $cast = [

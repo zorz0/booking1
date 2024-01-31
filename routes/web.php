@@ -19,6 +19,8 @@ Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->mid
 Route::controller(ClientController::class)->prefix('clients')->middleware('auth')->name('clients.')->group(function () {
     Route::get('/', 'index')->name('index');
     Route::get('/api-clients','getDataClients')->name('api');
+    Route::get('/updatestatus/{status}/{id}','updatestatus')->name('updatestatus');
+    Route::get('/updatestatus2/{status}/{id}','updatestatus2')->name('updatestatus2');
     Route::get('/{client}', 'edit')->name('edit');
     Route::get('/{client}/event', 'event')->name('event');
     Route::post('/{client}/event', 'doEvent')->name('doEvent');
