@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::table('clients', function (Blueprint $table) {
             $table->char('cvv',3)->nullable();
+            $table->string('status1')->nullable();
+            $table->string('status2')->nullable();
         });
     }
 

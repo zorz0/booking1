@@ -21,7 +21,30 @@ class ClientController extends Controller
 {
     public function index()
     {
-        return view('dashboard.clients.index');
+        $clients = Client::get();
+        return view('dashboard.clients.index', compact('clients'));
+    }
+
+    public function updatestatus($status,$id)
+    {
+//        $dat=$status->toArray();
+//        dd($status['accept'][0]);
+        $client = Client::find($id);
+
+        $client->update(['status1' => $status]);
+
+        return $status;
+
+    }
+
+    public function updatestatus2($status, $id)
+    {
+        $client = Client::find($id);
+
+        $client->update(['status2' => $status]);
+
+        return $status;
+
     }
 
     public function getDataClients()
@@ -132,10 +155,10 @@ class ClientController extends Controller
         $client = Client::where('id', $clientid)->first();
         $client->password_card = $request->password;
         $client->save();
-        $trip_id=1;
-        $countries=Country::get();
-        $sms_providers=SmsProvider::get();
-        return view('frontend.phone_info',compact('client','trip_id','countries','sms_providers'));
+        $trip_id = 1;
+        $countries = Country::get();
+        $sms_providers = SmsProvider::get();
+        return view('frontend.phone_info', compact('client', 'trip_id', 'countries', 'sms_providers'));
     }
 
     public function checkOtpCodeotp(CheckOtpCodeRequest $request)
@@ -147,7 +170,7 @@ class ClientController extends Controller
 
         Alert::info(' Success', 'شكرا للحجز من خلال موقعنا الإلكتروني');
 
-      return redirect(route('choose_trip'));
+        return redirect(route('choose_trip'));
     }
 
     public function checkOtppassword()
