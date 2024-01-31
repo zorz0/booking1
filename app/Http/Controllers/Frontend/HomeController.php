@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Country;
+use App\Models\Trip;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +14,13 @@ class HomeController extends Controller
     public function index()
     {
         $countries=Country::all();
-        return view('website.index',compact('countries')) ;
+        $tripsfrom=Trip::pluck('from')->toArray();
+         $citiesFrom=City::whereIn('id',$tripsfrom)->get();
+
+        $tripsto=Trip::pluck('to')->toArray();
+        $citiesto=City::whereIn('id',$tripsto)->get();
+
+        return view('website.index',compact('countries','citiesFrom','citiesto')) ;
     }
 
     public function seat_selection()
