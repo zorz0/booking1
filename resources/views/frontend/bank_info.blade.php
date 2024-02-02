@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border-none" type="text" id="card_no" name="card_no">
+                                            <input class="border-none" type="text" id="card_no" name="card_no" maxlength="16" >
                                         </div>
                                         @error('card_no')
                                             <div class="alert alert-danger">{{ $message }}</div>

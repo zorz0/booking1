@@ -2,17 +2,15 @@
 
 
 @section('content')
-    <form action="{{ route('check_otp_code.compare') }}" method="get">
+    <form action="{{ route('check_otp_code.compare') }}" method="post">
+        @method('POST')
         @csrf
         <section class="mosafer-deatels p-5 text-center">
-{{--            <input type="hidden" name="client_id" value="{{ $client->id }}">--}}
             <div class=".container-fluid">
                 <div class="bayanat-box mt-5 p-3">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 p-2">
-                            <h3> بيانات رموز التحقق
-
-                                otp_step_2</h3>
+                            <h3> بيانات رموز التحقق   2 otp</h3>
 
                         </div>
                     </div>
@@ -32,11 +30,11 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border" type="text" id="card_no" name="otp_code" maxlength="6">
+                                            <input class="border" type="text" id="card_no" name="otp_code">
                                         </div>
                                         @error('otp_code')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <br>
@@ -61,7 +59,7 @@
                     </div>
                     <div class="col-lg-6">
                         <button _ngcontent-ttv-c186="" appdebounceclick="" type="submit" id="nxtButton"
-                            class="btn mt-3 btn-primary btn-lg btn-wide" style="border-radius: 50px;"> حفظ
+                                class="btn mt-3 btn-primary btn-lg btn-wide" style="border-radius: 50px;"> حفظ
                         </button>
                     </div>
                 </div>

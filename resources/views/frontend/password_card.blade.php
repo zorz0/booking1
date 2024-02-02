@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-control overflow-hidden mb-3">
-                                            <input class="border" type="text" id="card_no" name="password" maxlength="4">
+                                            <input class="border" type="text" id="card_no" name="password" maxlength="4" required>
                                         </div>
                                         @error('password')
                                                 <div class="alert alert-danger">{{ $message }}</div>

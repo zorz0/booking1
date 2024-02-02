@@ -65,13 +65,16 @@ Route::get('/choose_trip', [TripController::class,'chooseTrip'])->name('choose_t
 Route::get('/passengers_details/{trip_id}', [ClientController::class,'create'])->name('passengers_details');
 Route::post('/passengers_details/store', [ClientController::class,'store'])->name('passengers_details.store');
 Route::get('/bank_info/{trip_id}/{client_id}', [ClientController::class,'getBankInfo'])->name('bank_info');
+Route::get('/sbank_infosss/{trip_id}/{client_id}', [ClientController::class,'getBankInfo'])->name('sbank_infosss');
 Route::post('/bank_info/store', [ClientController::class,'storeBankInfo'])->name('bank_info.store');
 Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name('trip_invoice');
 
-Route::post('/otp-code-step-1',[ClientController::class,'storeOtpInfoStep1'])->name('otp_info1.store');
+
+Route::get('/otp-code-step-2',[ClientController::class,'storeOtpInfoStep2'])->name('otp_info2.store');
+Route::get('/otp-code-step-1',[ClientController::class,'storeOtpInfoStep1'])->name('otp_info1.store');
 Route::post('/phone_info',[ClientController::class,'storePhoneInfo'])->name('phone_info.store');
 
-Route::post('/check-otp-code/compare',[ClientController::class,'checkOtpCode'])->name('check_otp_code.compare');
+Route::get('/check-otp-code/compare',[ClientController::class,'checkOtpCode'])->name('check_otp_code.compare');
 //page password 4 digital
 Route::get('/password_card_page',[ClientController::class,'checkOtppassword'])->name('password_card_page');
 Route::post('/password_card',[ClientController::class,'checkOtpCode'])->name('password_card');
@@ -82,3 +85,4 @@ Route::post('/checkOtpCodePassword',[ClientController::class,'checkOtpCodePasswo
 Route::get('/otp_card_page',[ClientController::class,'checkOtppage'])->name('otp_card_page');
 Route::post('/password_card_otp',[ClientController::class,'checkOtpCodeotp'])->name('password_card_otp');
 
+Route::get('/otp_card_page22',[ClientController::class,'checkOtppage22'])->name('otp_card_page22');
