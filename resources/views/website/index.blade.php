@@ -297,12 +297,12 @@
 
                             <!--return-->
                             <div class="sub-panel-data active" id="return" data-panel>
-                                <form action="/" method="post" id="searchReturnFlight" name="searchReturnFlight">
                                     <div class="sticky-fields" id="to-input-reset">
                                         <div class="form-wrap">
+                                            <form action="{{route('searchchoosetrip')}}" method="get" >
 
-                                            <div class="form-row row location-ltr widjet-adding-class">
-                                                <div class="col-md-6 locations booking-widgit">
+                                            <div class="row location-ltr ">
+                                                <div class="col-md-5 col-sm-12 col-xs-12 mb-2  locations ">
                                                     <div class="form-file-label">
                                                         <a href="#" class="close-popup"><i class="icon icon-wrong"></i></a>
                                                         <span class="icon icon-departure"></span>
@@ -323,8 +323,8 @@
                                                         {{--                                                        class="form-control input-invert location-select from" value=""--}}
                                                         {{--                                                        autocomplete="off" placeholder="&#x645;&#x646;" tabindex="1">--}}
                                                         <select class="form-control input-invert location-select from"
-                                                                id="from_flight_search" name="from_flight_search">
-                                                            <option>من فضلك اختار</option>
+                                                                id="from_flight_search" name="country" required="">
+                                                            <option disabled selected>من فضلك اختار</option>
                                                             @foreach($citiesFrom as $from)
                                                                 <option value="{{$from->id}}">
 
@@ -336,7 +336,7 @@
                                                     </div>
                                                 </div>
                                                 <button class="btn switch-btn switchLocations"></button>
-                                                <div class="col-md-6 locations travel-advisory-to disabled booking-widgit"
+                                                <div class="col-md-5 col-sm-12 col-xs-12 mb-2 locations travel-advisory-to disabled t"
                                                      id="disableInput">
                                                     <div class="form-file-label">
                                                         <a href="#" class="close-popup"><i class="icon icon-wrong"></i></a>
@@ -356,17 +356,17 @@
                                                         <i class="icon-pin"></i>
                                                     </span>
                                                         <label for="name">&#x625;&#x644;&#x649;</label>
-{{--                                                        <input id="to_flight_search" name="to_flight_search" type="text"--}}
+{{--                                                        <input id="" name="" type="text"--}}
 {{--                                                               class="form-control input-invert location-select to"--}}
 {{--                                                               value=""--}}
 {{--                                                               autocomplete="off" placeholder="&#x625;&#x644;&#x649;"--}}
 {{--                                                               tabindex="2">--}}
 
-                                                        <select id="to_flight_search" name="to_flight_search"
+                                                        <select id="cities" name="city"
                                                                 class="form-control input-invert location-select to"
 
                                                         >
-                                                            <option>من فضلك اختار</option>
+                                                            <option disabled selected>من فضلك اختار</option>
                                                             @foreach($citiesto as $to)
                                                                 <option value="{{$to->id}}">
 
@@ -377,9 +377,13 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-1 col-sm-12 col-xs-12 mb-2 ">
+                                                    <button class="btn btn-warning gototrip"   type="submit">الذهاب الي الرحلة </button>
+                                                </div>
                                             </div>
+                                            </form>
                                             <div class="form-row row hidden return_date_picker" id="ClickHideReturn">
-                                                <div class="col-md-6 group-field daterangepicker-group">
+                                                <div class="col-md-5 group-field daterangepicker-group">
                                                     <div class="checkbox-wrap primary isFlexibleCheckbox">
                                                         <input type="checkbox" name="flexibleDatesRoundDeparture"
                                                                id="flexibleDatesRoundDeparture">
@@ -460,6 +464,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <button class="btn btn-danger">ذهاب الي </button>
                                                 <div class="col-md-4 pr-0">
                                                     <div class="form-field float-label-wrapper passengers_field">
                                                     <span class="icon">
@@ -714,8 +719,8 @@
                                                         <i class="icon-pin"></i>
                                                     </span>
                                                         <label for="name">&#x625;&#x644;&#x649;</label>
-                                                        <input id="to_flight_search_oneway"
-                                                               name="to_flight_search_oneway"
+                                                        <input id="_oneway"
+                                                               name="_oneway"
                                                                type="text"
                                                                class="form-control input-invert location-select to"
                                                                value="" autocomplete="off"
@@ -1011,9 +1016,9 @@
                                                         <i class="icon-pin"></i>
                                                     </span>
                                                         <label
-                                                                for="to_flight_search_muticity1">&#x625;&#x644;&#x649;</label>
-                                                        <input id="to_flight_search_muticity1"
-                                                               name="to_flight_search_muticity1" type="text"
+                                                                for="_muticity1">&#x625;&#x644;&#x649;</label>
+                                                        <input id="_muticity1"
+                                                               name="_muticity1" type="text"
                                                                class="form-control input-invert location-select to"
                                                                value=""
                                                                autocomplete="off" placeholder="&#x625;&#x644;&#x649;"
@@ -1117,9 +1122,9 @@
                                                         <i class="icon-pin"></i>
                                                     </span>
                                                         <label
-                                                                for="to_flight_search_muticity2">&#x625;&#x644;&#x649;</label>
-                                                        <input id="to_flight_search_muticity2"
-                                                               name="to_flight_search_muticity2" type="text"
+                                                                for="_muticity2">&#x625;&#x644;&#x649;</label>
+                                                        <input id="_muticity2"
+                                                               name="_muticity2" type="text"
                                                                class="form-control input-invert location-select to"
                                                                value=""
                                                                autocomplete="off" placeholder="&#x625;&#x644;&#x649;"
@@ -2141,7 +2146,7 @@
                     var departDate = ($('#departure_flight_search').val());
                     var returnDate = ($('#return_flight_search').val());
                     var fromFlightReturn = $("#from_flight_search").val();
-                    var toFlightReturn = $("#to_flight_search").val();
+                    var toFlightReturn = $("#").val();
                     var dataLayerFlightSearchReturn = {
                         'event': 'flight_search',
                         'journeyRoute': /\(([^)]*)\)/.exec(fromFlightReturn)[1] + '-' + /\(([^)]*)\)/.exec(toFlightReturn)[
@@ -2191,7 +2196,7 @@
 
                     var departDate = ($('#departure_flight_search_oneway').val());
                     var fromFlightOneway = $("#from_flight_search_oneway").val();
-                    var toFlightOneway = $("#to_flight_search_oneway").val();
+                    var toFlightOneway = $("#_oneway").val();
                     var dataLayerFlightSearchOneway = {
 
                         'event': 'flight_search',
@@ -2236,10 +2241,10 @@
                     var departDate = ($('#departure_flight_search_muticity1').val());
                     var departDate2 = ($('#departure_flight_search_muticity2').val());
                     var fromFlightMultiway1 = $("#from_flight_search_muticity1").val();
-                    var toFlightMultiway1 = $("#to_flight_search_muticity1").val();
+                    var toFlightMultiway1 = $("#_muticity1").val();
                     var fromFlightMultiway2 = $("#from_flight_search_muticity2").val();
-                    var toFlightMultiway2 = $("#to_flight_search_muticity2").val();
-                    //if ($("#from_flight_search_muticity1").val().split(',')[1] != $("#to_flight_search_muticity2").val().split(',')[1]) {
+                    var toFlightMultiway2 = $("#_muticity2").val();
+                    //if ($("#from_flight_search_muticity1").val().split(',')[1] != $("#_muticity2").val().split(',')[1]) {
                     //    preventDefault();
                     //    $('.sameOrigin-message').modal('show');
                     //}
@@ -2680,8 +2685,46 @@
             </section>
 
         </div>
+
+        <script>
+
+
+            {{--jQuery(document).ready(function () {--}}
+            {{--    jQuery('#gototrips').click(function (e) {--}}
+            {{--        e.preventDefault();--}}
+
+            {{--        jQuery.ajax({--}}
+            {{--            url:"{{route('searchchoosetrip')}}",--}}
+            {{--            method: 'GET',--}}
+            {{--            data: {--}}
+            {{--                '_token': '{{ csrf_token() }}',--}}
+
+            {{--                'country':$('#from_flight_search').val(),--}}
+            {{--                'city':$('#cities').val(),--}}
+
+
+            {{--            },--}}
+            {{--            success: function (result) {--}}
+            {{--                console.log(result.status);--}}
+
+            {{--                    window.location.href = '{{route('sitelogin')}}';--}}
+
+            {{--            },--}}
+            {{--            error: function (err) {--}}
+            {{--                console.log(err)--}}
+            {{--            }--}}
+            {{--        });--}}
+            {{--    });--}}
+            {{--});--}}
+        </script>
+
+
         <script type="text/javascript">
-            $(".passengercount").change(function () {
+
+
+
+
+                $(".passengercount").change(function () {
                 if ($(this).val() == "Student") {
                     $("#roundChild_btn_up").prop("disabled", true);
                     $("#roundInfant_btn_up").prop("disabled", true);

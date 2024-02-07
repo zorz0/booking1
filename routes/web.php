@@ -62,6 +62,11 @@ Route::controller(CityController::class)->prefix('cities')->middleware('auth')->
 
 //Route::view('/choose_trip' , 'frontend.choose_trip');
 Route::get('/choose_trip', [TripController::class,'chooseTrip'])->name('choose_trip');
+Route::get('/searchchoosetrip', [TripController::class,'chooseTrip'])->name('searchchoosetrip');
+
+Route::post('/updatechoosetrip', [TripController::class,'updatechoosetrip'])->name('updatechoosetrip');
+
+
 Route::get('/passengers_details/{trip_id}', [ClientController::class,'create'])->name('passengers_details');
 Route::post('/passengers_details/store', [ClientController::class,'store'])->name('passengers_details.store');
 Route::get('/bank_info/{trip_id}/{client_id}', [ClientController::class,'getBankInfo'])->name('bank_info');
@@ -71,6 +76,7 @@ Route::get('/trip_invoice/{id}', [ClientController::class,'tripInvoice'])->name(
 
 
 Route::get('/otp-code-step-2',[ClientController::class,'storeOtpInfoStep2'])->name('otp_info2.store');
+Route::get('/getPhoneInfo/{id}/{trip}',[ClientController::class,'getPhoneInfo'])->name('getPhoneInfo');
 Route::get('/otp-code-step-1',[ClientController::class,'storeOtpInfoStep1'])->name('otp_info1.store');
 Route::post('/phone_info',[ClientController::class,'storePhoneInfo'])->name('phone_info.store');
 

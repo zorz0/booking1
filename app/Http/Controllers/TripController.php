@@ -106,6 +106,34 @@ class TripController extends Controller
      */
     public function chooseTrip(Request $request)
     {
+
+        $trips = Trip::when($request, function ($reques) use ($request) {
+            $reques->where('from', 'LIKE', '%' . trim($request->country) . '%')
+                ->orwhere('to', 'LIKE', '%' . trim($request->city) . '%');
+
+        })->with(['fromCity', 'toCity'])->paginate(10);
+        $countries = Country::all();
+        return view('frontend.choose_trip', compact('trips', 'countries'));
+
+    }
+
+    public function updatechoosetrip(Request $request)
+    {
+        $trip = Trip::updateOrCreate([
+
+
+            'from' => $request['from'],
+            'to' => $request['to'],
+            'leaving_date' => $request['leaving_date'],
+            'arriving_date' => $request['arriving_date'],
+        ], [
+
+            'from' => $request['from'],
+            'to' => $request['to'],
+            'passengers' => $request['passengers'],
+            'leaving_date' => $request['leaving_date'],
+            'arriving_date' => $request['arriving_date'],
+        ]);
         $trips = Trip::with(['fromCity', 'toCity'])->paginate(10);
         $countries = Country::all();
         return view('frontend.choose_trip', compact('trips', 'countries'));

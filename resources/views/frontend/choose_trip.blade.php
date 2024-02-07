@@ -24,23 +24,23 @@
                     <div class="tab-contant  my-3 " id="web" style="overflow: hidden;">
                         <div class="row d-flex " style="overflow: hidden;">
                             <!-- <div class="tabs-info "> -->
-                            <div class="from-info col-lg-3 mb-3 bg-white mx-2 p-2">
+                            <div class="from-info col-lg-4 mb-4  col-sm-6 col-xs-6 ">
                                 <label for="" class="">من</label>
                                 <!-- <input type="text" id="From-value" value=""> -->
                                 <div class="dropdown">
                                     <input type="text" id="searchInput1" oninput="filterCountries(1)"
-                                        onclick="showDropdown(1)" placeholder="  ابحث عن البلد">
+                                           onclick="showDropdown(1)" placeholder="  ابحث عن البلد">
                                     <div id="countryDropdown1" class="dropdown-content"></div>
                                 </div>
 
                             </div>
 
-                            <div class="from-info col-lg-3 mb-3 bg-white mx-2 p-2">
+                            <div class="from-info col-lg-4 mb-4  col-sm-6 col-xs-6">
                                 <label for="" class="">الي</label>
                                 <!-- <input type="text" id="ToValue" value=""> -->
                                 <div class="dropdown">
                                     <input type="text" id="searchInput2" oninput="filterCountries(2)"
-                                        onclick="showDropdown(2)" placeholder="  ابحث عن البلد">
+                                           onclick="showDropdown(2)" placeholder="  ابحث عن البلد">
                                     <div id="countryDropdown2" class="dropdown-content"></div>
                                 </div>
                             </div>
@@ -98,12 +98,14 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="decrement()">-</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="decrement()">-
+                                                </button>
                                                 <span id="counter">1</span>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="increment()">+</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="increment()">+
+                                                </button>
                                             </div>
                                             <h6>بالغ ( الأعمار 12+ )</h6>
                                         </div>
@@ -111,12 +113,14 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="decrement2()">-</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="decrement2()">-
+                                                </button>
                                                 <span id="counter2">0</span>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="increment2()">+</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="increment2()">+
+                                                </button>
                                             </div>
                                             <h6>الأطفال ( الأعمار 2-11 ) </h6>
                                         </div>
@@ -124,12 +128,14 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="decrement3()">-</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="decrement3()">-
+                                                </button>
                                                 <span id="counter3">0</span>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="increment3()">+</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="increment3()">+
+                                                </button>
                                             </div>
                                             <h6>رضيع ( الأعمار 0-2 ) </h6>
                                         </div>
@@ -137,12 +143,14 @@
                                         <div class="d-flex justify-content-between">
                                             <div>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="decrement4()">-</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="decrement4()">-
+                                                </button>
                                                 <span id="counter4">0</span>
                                                 <button class="text-center"
-                                                    style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                    onclick="increment4()">+</button>
+                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                        onclick="increment4()">+
+                                                </button>
                                             </div>
                                             <h6>مقعد مزدوج</h6>
                                         </div>
@@ -181,7 +189,7 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <form action="" method="POST">
+                    <form action="{{route('updatechoosetrip')}}" method="POST">
                         @method('POST')
                         @csrf
 
@@ -190,8 +198,9 @@
                                 <!-- <div class="tabs-info "> -->
                                 <div class="from-info col-lg-3 bg-white mb-3 mx-2 p-2">
                                     <label for="" class="">من</label>
-                                    <select class=" form-control " aria-label="Default  example" id="from_country">
-                                        <option selected>اختر البلد</option>
+                                    <select class=" form-control " aria-label="Default  example" id="from_country"
+                                            name="from" required>
+                                        <option selected disabled>اختر البلد</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
@@ -199,9 +208,9 @@
                                 </div>
                                 <div class="from-info col-lg-3  bg-white  mb-3 mx-2 p-2">
                                     <label for="" class="">إلى</label>
-                                    <select class="form-control" aria-label="Default example"
-                                        onchange="fillCities(this)">
-                                        <option selected>اختر البلد</option>
+                                    <select class="form-control" aria-label="Default example" name="to" required
+                                            onchange="fillCities(this)">
+                                        <option disabled selected>اختر البلد</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
@@ -209,18 +218,19 @@
                                 </div>
                                 <div class="from-info col-lg-2 bg-white  mb-3 mx-2 p-2">
                                     <label for="" class="">تاريخ المغادرة</label>
-                                    <input type="date" value="">
+                                    <input type="date" name="leaving_date" required>
                                 </div>
                                 <div class="from-info col-lg-2  bg-white  mb-3 mx-2 p-2">
                                     <label for="" class="">عوده</label>
-                                    <input type="date" value="">
+                                    <input type="date" name="arriving_date" required>
                                 </div>
-                                <div class="col-lg-1  p-3 mdf-btn d-flex justify-content-between " style="height: 50px;">
+                                <div class="col-lg-1"
+                                     style="height: 50px;">
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fa-solid fa-plane "></i>
+                                        تعديل
 
-                                    <i class="fa-solid fa-plane "></i>
-                                    <label for="" class="">تعديل</label>
-
-
+                                    </button>
                                 </div>
                                 <div class="from-info col-lg-4 mt-3  mb-3  bg-white mx-2 p-2">
                                     <label for="" class="">المسافرون</label>
@@ -259,12 +269,14 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="decrement22()">-</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="decrement22()">-
+                                                    </button>
                                                     <span id="counter-2">1</span>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="increment22()">+</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="increment22()">+
+                                                    </button>
                                                 </div>
                                                 <h6>بالغ ( الأعمار 12+ )</h6>
                                             </div>
@@ -272,12 +284,14 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="decrement2T()">-</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="decrement2T()">-
+                                                    </button>
                                                     <span id="counter2-2">0</span>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="increment2T()">+</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="increment2T()">+
+                                                    </button>
                                                 </div>
                                                 <h6>الأطفال ( الأعمار 2-11 ) </h6>
                                             </div>
@@ -285,12 +299,14 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="decrement3T()">-</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="decrement3T()">-
+                                                    </button>
                                                     <span id="counter3-2">0</span>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="increment3T()">+</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="increment3T()">+
+                                                    </button>
                                                 </div>
                                                 <h6>رضيع ( الأعمار 0-2 ) </h6>
                                             </div>
@@ -298,12 +314,14 @@
                                             <div class="d-flex justify-content-between">
                                                 <div>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="decrement4T()">-</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="decrement4T()">-
+                                                    </button>
                                                     <span id="counter4-2">0</span>
                                                     <button class="text-center"
-                                                        style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
-                                                        onclick="increment4T()">+</button>
+                                                            style="border-radius: 20px; line-height: 20px; display: inline-block; height: 22px;width: 22px;"
+                                                            onclick="increment4T()">+
+                                                    </button>
                                                 </div>
                                                 <h6>مقعد مزدوج</h6>
                                             </div>
@@ -325,7 +343,7 @@
 
                                 <div class="from-info col-lg-3 mt-3  mb-3  bg-white mx-2 p-2">
                                     <label for="" class="">الرمز الترويجي</label>
-                                    <input type="text" value="">
+                                    <input type="text" name="passengers" required>
                                 </div>
                                 <div class="from-info col-lg-3 mt-3  mb-3  bg-white mx-2 p-2">
 
@@ -333,7 +351,7 @@
 
 
                                     <select class="form-control" id="exampleFormControlSelect1">
-                                        <option>عدم الاختيار </option>
+                                        <option>عدم الاختيار</option>
 
                                         <option>طالب علم</option>
 
@@ -342,8 +360,10 @@
                                 <!-- </div> -->
                             </div>
                         </div>
-                    </form>
+
                 </div>
+                </form>
+
                 <div class="col-lg-12">
                     <div class="tab-contant  my-3 " id="desigen" style="overflow: hidden;">
                         <div class="row  tabs-describtion d-flex">
@@ -354,7 +374,7 @@
                                     <label for="" class="p-2">من</label>
                                     <div class="dropdown">
                                         <input type="text" id="searchInput4" oninput="filterCountries(4)"
-                                            onclick="showDropdown(4)" placeholder="  ابحث عن البلد">
+                                               onclick="showDropdown(4)" placeholder="  ابحث عن البلد">
                                         <div id="countryDropdown4" class="dropdown-content"></div>
                                     </div>
                                 </div>
@@ -362,7 +382,7 @@
                                     <label for="" class="p-2">الي</label>
                                     <div class="dropdown">
                                         <input type="text" id="searchInput4" oninput="filterCountries(4)"
-                                            onclick="showDropdown(4)" placeholder="  ابحث عن البلد">
+                                               onclick="showDropdown(4)" placeholder="  ابحث عن البلد">
                                         <div id="countryDropdown4" class="dropdown-content"></div>
                                     </div>
                                 </div>
@@ -445,44 +465,47 @@
                 <p>القاهره</p>
             </div>
             @if (count($trips)>0)
-            <div class='container row'>
-                <div class="container col-lg-12">
-                    
-                    @foreach ($trips as $trip)
-                            <li class="page-item content tab-titel-day-2 active-day-2" data-id="Day1-2"><a
-                                class="page-link Day1" href="{{route('passengers_details',$trip->id)}}">
-                                <div class="date-plan">
-                                    <div class="box-of-country justify-content-center d-flex mt-2">
-                                        <p>{{ $trip->toCity->name }} </p>
-                                        <i class="fa-solid fa-plane  mx-3"></i>
-                                        <p>{{ $trip->fromCity->name }}</p>
-                                       
+                <div class='container row'>
+                    <div class="container col-lg-12">
+
+                        @foreach ($trips as $trip)
+                            {{--                        {{route('passengers_details',$trip->id)}}--}}
+                            <li class="page-item content tab-titel-day-2 active-day-2" data-id="{{$trip->id}}">
+
+                                <a
+                                        class="page-link Day1" data-id="{{$trip->id}}">
+                                    <div class="date-plan">
+                                        <div class="box-of-country justify-content-center d-flex mt-2">
+                                            <input type="checkbox" name="trip" value="{{$trip->id}}"
+                                                   style="width: 100%">
+                                            <p>{{ $trip->toCity->name }} </p>
+                                            <i class="fa-solid fa-plane  mx-3"></i>
+                                            <p>{{ $trip->fromCity->name }}</p>
+
+                                        </div>
+                                        <div class="d-flex">
+                                            <h5> موعد الإقلاع: </h5><span> {{ $trip->leaving_date }}</span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <h5> موعد الوصول: </h5><span> {{ $trip->arriving_date }}</span>
+                                        </div>
+
                                     </div>
-                                    <div class="d-flex">
-                                        <h5> موعد الإقلاع: </h5><span> {{ $trip->leaving_date }}</span>
-                                    </div>
-                                    <div class="d-flex">
-                                        <h5> موعد الوصول: </h5><span> {{ $trip->arriving_date }}</span>
-                                    </div>
-                                   
-                                </div>
-                            </a></li>
-                    @endforeach
+                                </a></li>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
             @else
 
-            <div class='container row'>
-                <div class="container col-lg-12">
-                    <h5> لا رحلات طيران متوفرة</h5>
-                    <p>يرجى تغيير معاملات البحث</p>
+                <div class='container row'>
+                    <div class="container col-lg-12">
+                        <h5> لا رحلات طيران متوفرة</h5>
+                        <p>يرجى تغيير معاملات البحث</p>
 
+                    </div>
                 </div>
-            </div>
-                
-            @endif
-            
 
+            @endif
 
 
         </div>
@@ -495,10 +518,42 @@
     <!-- start next-step -->
     <section class="p-5">
         <div class="d-flex justify-content-center">
-            <div class="alert alert-warning w-50 text-center" role="alert">
+            {{--            <div class="alert alert-warning w-50 text-center" role="alert">--}}
+
+            <button id="buttoncheck" class="form-control btn-primary">
                 الخطوه التاليه : بيانات المسافر
-            </div>
+            </button>
+
+            {{--            </div>--}}
         </div>
     </section>
     <!-- end next-step -->
 @endsection
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script>
+
+
+    jQuery(document).ready(function () {
+        jQuery('#buttoncheck').click(function (e) {
+            e.preventDefault();
+            var id = $('input[name="trip"]:checked').val();
+            var url = "{{ route('passengers_details', ":id") }}";
+            url = url.replace(':id', id);
+
+            console.log("iddd", id);
+            jQuery.ajax({
+                url: url,
+
+                success: function (result) {
+                    document.location = url;  // redirect browser to link
+
+
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            });
+        });
+    });
+</script>

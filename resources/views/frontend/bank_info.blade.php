@@ -25,69 +25,56 @@
             </div>
             <div class=".container-fluid">
 
-                <div class="bayanat-box mt-5 p-3">
+                <div class="bayanat-box mt-5 ">
                     <div class="row d-flex justify-content-center">
-                        <div class="col-lg-6 p-2">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12   passenger-details">
                             <div class="box-1-bayanat-2 mb-3 ">
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-6">
-                                        <div class="form-control">
-                                            <label for="" class="d-block"> اسم العميل </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-control overflow-hidden mb-3">
-                                            <input class="border-none" type="text" id="card_no" name="name" readonly
+                                <div class="row ">
+                                    
+                                    <div class="col-lg-12 col-sm-12 col-md-12 mb-4">
+                                          <label for="" class="d-block col-md-3 col-sm-12 col-xs-12" > اسم العميل </label>
+                                        <div class="mb-3 col-md-9 col-sm-12 col-xs-12 ">
+                                            <input class="form-control" type="text" id="card_no" name="name" readonly
                                                 value="{{ $client->first_name . $client->family_name }}">
                                         </div>
                                     </div>
-                                </div>
-                                <br>
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-6">
-                                        <div class="form-control">
-                                            <label for="" class="d-block"> رقم البطاقة البنكية </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-control overflow-hidden mb-3">
-                                            <input class="border-none" type="text" id="card_no" name="card_no" maxlength="16" >
+                               
+                               
+                                
+                                    
+                                    <div class="col-lg-12 col-sm-12 col-md-12 mb-4">
+                                         <label for="" class="d-block col-md-3 col-sm-12 col-xs-12"> رقم البطاقة البنكية </label>
+                                        <div class="mb-3 col-md-9 col-sm-12 col-xs-12 ">
+                                            <input  class="form-control"  type="text" id="card_no" name="card_no" maxlength="16" >
                                         </div>
                                         @error('card_no')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                </div>
-                                <br>
+                             
 
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-6">
-                                        <div class="form-control">
-                                            <label for="" class="d-block"> CVV </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-control overflow-hidden mb-3">
-                                            <input class="border-none" type="text" id="card_no" name="cvv" max="3" min="1" maxlength="3"  size="3">
+                                
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4 col-xs-12">
+                                        <label for="" class="d-block  col-md-3  col-sm-12 col-xs-12"> CVV </label>
+                                        <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 mb-3">
+                                            <input class="form-control" type="text" id="card_no" name="cvv" max="3" min="1" maxlength="3"  size="3">
 
                                         </div>
                                         @error('cvv')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                </div>
-                                <br>
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-6">
-                                        <div class="form-control">
-                                            <label for="" class="d-block"> تاريخ انتهاء الصلاحية </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="form-group">
+                                
+                               
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12 mb-4 col-xs-12">
+                                       
+                                            <label for="" class="d-block col-md-3  col-sm-12 col-xs-12"> تاريخ انتهاء الصلاحية </label>
+                                            <div class="col-md-9 col-lg-9  col-sm-12 col-xs-12 mb-3">
                                             <div class='input-group date' id='datetimepicker1'>
                                                 <input type='text' class="form-control" name="expiry_date" />
-                                                <span class="input-group-addon">
+                                                <span class="input-group-addon date-style">
                                                     <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
                                             </div>

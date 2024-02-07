@@ -53,15 +53,15 @@
                 </div>
                 <div class=".container-fluid">
 
-                    <div class="bayanat-box mt-5 p-3">
+                    <div class="bayanat-box mt-5 ">
                         <div class="row d-flex justify-content-center">
-                            <div class="col-lg-6 p-2">
-                                <div class="box-1-bayanat-2 mb-3 ">
+                            <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 passenger-details">
+                                <div class="box-1-bayanat-2 mb-5 passenger ">
                                     <div class="row d-flex justify-content-between">
-                                        <div class="col-lg-4">
-                                            <div class="form-control overflow-hidden mb-3">
+                                        <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                            <div class=" mb-5">
                                                 <label for="" class="d-block"> اللقب</label>
-                                                <select class="form-control" aria-label="Default example" name="title">
+                                                <select class="form-select" aria-label="Default select example" name="title">
                                                     <option selected>اختر من القائمة</option>
                                                     <option value="السيد">السيد</option>
                                                     <option value="السيدة"> السيدة</option>
@@ -70,47 +70,47 @@
                                             </div>
                                         </div>
                                     
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class="mb-5">
                                             <label for="" class="d-block">الاسم الاول</label>
-                                            <input class="border-none" type="text" name="first_name">
+                                            <input class="form-control" type="text" name="first_name">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> اسم العائلة</label>
-                                            <input class="border-none" type="text" name="family_name">
+                                            <input class="form-control" type="text" name="family_name">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                <div class="row ">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> الجنسية</label>
-                                            <input class="border-none" type="text" name="nationality">
+                                            <input class="form-control" type="text" name="nationality">
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> تاريخ الميلاد</label>
-                                            <input class="border-none" type="date" name="birth_date">
+                                            <input class="form-control" type="date" name="birth_date">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> البريد الالكتروني</label>
-                                            <input class="border-none" type="email" name="email">
+                                            <input class="form-control" type="email" name="email">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row d-flex justify-content-between">
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                <div class="row ">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> بلد الإقامة</label>
-                                            <select class="form-control" aria-label="Default example"
+                                            <select class="form-select" aria-label="Default example"
                                                 name="residence_country">
-                                                <option selected>Open this select menu</option>
+                                                <option selected>اختار البلد  من فضلك </option>
                                                 @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}">{{ $country->name }}</option>
                                                 @endforeach
@@ -118,16 +118,16 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class=" mb-5">
                                             <label for="" class="d-block"> المدينة</label>
-                                            <input type="text" name="residence_city">
+                                            <input type="text"  class="form-control" name="residence_city">
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <div class="form-control overflow-hidden mb-3">
+                                    <div class="col-lg-4 col-sm-6 col-md-4 col-xs-6">
+                                        <div class="mb-5">
                                             <label for="" class="d-block"> الهاتف المحمول </label>
-                                            <input class="border-none" type="text" name="phone">
+                                            <input class="form-control" type="text" name="phone">
                                         </div>
                                     </div>
                                 </div>

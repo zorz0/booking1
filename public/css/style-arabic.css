@@ -1,4 +1,4 @@
-﻿@charset "UTF-8";
+@charset "UTF-8";
 @font-face {
     font-family: '29LT Bukra';
     src: url('../fonts/29LT_Bukra_Light.woff') format('woff'), url('src/assets/fonts/29LT_Bukra_Light.ttf') format('ttf');
@@ -7,7 +7,7 @@
     font-display: swap;
 }
 
-@font-face {
+@font-face {    
     font-family: '29LT Bukra';
     src: url('../fonts/29LT_Bukra_Medium.woff') format('woff'), url('src/assets/fonts/29LT_Bukra_Medium.ttf') format('ttf');
     /*   font-weight: normal;*/
@@ -468,6 +468,28 @@ textarea {
     position: absolute;
     text-align: center;
     width: 100%
+}
+.gototrip{
+     font-family: 'Cairo', sans-serif !important;
+font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+font-family: 'Readex Pro', sans-serif !important;
+font-family: 'Tajawal', sans-serif !important;
+color:white !important;
+border-radius:10px !important;
+height: 100% !important;
+    text-align: center !important;
+    margin: auto !important;
+    display: table !important;
+  
+    background-color: #d39e00 !important;
+    border-color: #c69500 !important;
+    font-weight: bold !important;
+ 
+}
+.gototrip:hover{
+    border-color: #d39e00;
+    background:white !important;
+    color: #d39e00;
 }
 
 body,
@@ -6739,11 +6761,6 @@ section.banner + section.search-flights-wrapper {
             position: absolute
         }
 
-.locations.disabled {
-    cursor: default;
-    pointer-events: none;
-    opacity: .8
-}
 
 .tab-panel {
     position: relative;

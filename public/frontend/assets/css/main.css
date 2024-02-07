@@ -17,6 +17,39 @@
     box-sizing: border-box;
    
   }
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9{
+      float:right !important;
+  }
+  .date-style{
+      position: absolute;
+    left: 2px;
+    z-index: 100;
+    width: 32px !important;
+    height: 32px;
+    border-top-left-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+  }
+  .date-style span{
+          position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    display:table;
+   
+    
+
+  }
+  .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9{
+      float:right !important;
+  }
+  .Title{
+    font-family: 'Cairo', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+
+}
+    
   img {
     max-width: 100%;
     display: block;
@@ -292,17 +325,51 @@ color: #004A97;
 .mosafer-deatels h3{
   color: #3498db;
   font-size: 30px;
+   font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
+  
+
 }
 .alert-passenger {
   border: 2px gold solid;
   background-color: rgb(255, 255, 255);
   border-radius: 5px;
 }
+.mosafer-deatels h5{
+     font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
+}
+.radio-bayanat label{
+    font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
+    
+}
 .warn-cont {
   text-align: right;
 }
+.warn-cont  p{
+    font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
+}
 .warn-cont h4{
   color: #3498db;
+  font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
 }
 .null-div{
   background-color: gold;
@@ -334,9 +401,55 @@ color: #004A97;
 .div-head-bayanat {
   justify-content: space-between;
 }
-.box-1-bayanat-2 input{
-  border: none;
-  overflow: hidden;
+.d-block{
+   float: right;
+   font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+    font-size: 18px;
+    margin-bottom: 5%;
+    font-weight:bold;
+    text-align:right;
+
+}
+.passenger-details input ,.form-select{
+    padding:3% !important;
+}
+.passenger-details{
+    background-color: white;
+    box-shadow:4px 4px 4px 4px #f8f9fa;
+    padding: 5% !important;
+    border-top: 5px solid #ffc107;
+    
+}
+/*for Desktop*/
+@media (min-width:600px) {
+    .passenger-details{
+        padding:4%;
+    }
+}
+.form-select ,input{
+    border-radius:10px !important;
+    margin-bottom:3%;
+        font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+
+    
+}
+.warn-cont  {
+    
+}
+.passenger-details .form-select{
+    background-position: left 0.75rem center;
+         font-family: 'Cairo', sans-serif;
+font-family: 'IBM Plex Sans Arabic', sans-serif;
+font-family: 'Readex Pro', sans-serif;
+font-family: 'Tajawal', sans-serif;
+font-weight:bold;
+
 }
 .NextStep a{
   text-decoration: none;
@@ -400,4 +513,6 @@ color: #004A97;
 
 .dropdown.show .dropdown-content {
   display: block;
+}
+
 }
