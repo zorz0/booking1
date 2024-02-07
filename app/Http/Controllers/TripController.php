@@ -113,7 +113,8 @@ class TripController extends Controller
 
         })->with(['fromCity', 'toCity'])->paginate(10);
         $countries = Country::all();
-        return view('frontend.choose_trip', compact('trips', 'countries'));
+        $cities=City::get();
+        return view('frontend.choose_trip', compact('trips', 'countries','cities'));
 
     }
 
@@ -136,6 +137,9 @@ class TripController extends Controller
         ]);
         $trips = Trip::with(['fromCity', 'toCity'])->paginate(10);
         $countries = Country::all();
-        return view('frontend.choose_trip', compact('trips', 'countries'));
+        $cities=City::get();
+
+
+        return view('frontend.choose_trip', compact('trips', 'countries','cities'));
     }
 }

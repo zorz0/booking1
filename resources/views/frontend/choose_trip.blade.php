@@ -200,7 +200,7 @@
                                     <label for="" class="">من</label>
                                     <select class=" form-control " aria-label="Default  example" id="from_country"
                                             name="from" required>
-                                        <option selected disabled>اختر البلد</option>
+                                        <option selected disabled>اختر الدوله</option>
                                         @foreach ($countries as $country)
                                             <option value="{{ $country->id }}">{{ $country->name }}</option>
                                         @endforeach
@@ -211,8 +211,8 @@
                                     <select class="form-control" aria-label="Default example" name="to" required
                                             onchange="fillCities(this)">
                                         <option disabled selected>اختر البلد</option>
-                                        @foreach ($countries as $country)
-                                            <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                        @foreach ($cities as $city)
+                                            <option value="{{ $city->id }}">{{ $city->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
